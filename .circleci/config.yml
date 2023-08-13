@@ -11,7 +11,7 @@ jobs:
       # Install dependencies
       - run:
           name: Install Dependencies
-          command: composer install
+          command: composer install --ignore-platform-reqs
 
       # Run Database Migrations
       - run:
