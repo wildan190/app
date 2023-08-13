@@ -11,7 +11,7 @@ jobs:
       # Install dependencies
       - run:
           name: Install Dependencies
-          command: composer install --ignore-platform-reqs
+          command: composer update
 
       # Set up PHPUnit environment
       - run:
