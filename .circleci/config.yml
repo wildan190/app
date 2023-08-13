@@ -1,0 +1,30 @@
+version: 2.1
+jobs:
+  build:
+    docker:
+      - image: circleci/php:7.4-fpm-browsers
+    working_directory: ~/project
+    
+    steps:
+      - checkout
+      
+      # Install dependencies
+      - run:
+          name: Install Dependencies
+          command: composer install
+
+      # Run Database Migrations
+      - run:
+          name: Run Database Migrations
+          command: php artisan migrate --force
+
+      # Run Tests
+      - run:
+          name: Run Tests
+          command: php artisan test
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build
